@@ -1,0 +1,40 @@
+/* Apply styles to the table */
+.patient-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Style table header */
+.patient-table th {
+    background-color: #f2f2f2;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Style table rows */
+.patient-table tr {
+    background-color: #f9f9f9;
+}
+
+.patient-table tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+/* Style buttons */
+.action-button {
+    padding: 6px 12px;
+    margin: 4px;
+    border: none;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.action-button:hover {
+    background-color: #45a049;
+}

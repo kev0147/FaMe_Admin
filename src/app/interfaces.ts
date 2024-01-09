@@ -4,6 +4,7 @@ export interface Profile {
     firstname: string;
     email?: string; // Optional field
     phone_number: number;
+    user?: User
 }
 
 export interface Patient {
@@ -23,11 +24,12 @@ export interface User {
     password: string;
 }
 
-export interface Balance {
-    balance: number;
+export interface Doctor {
+    id: number;
+    profile: Profile;
+    doctors_order_number? : string;
+    speciality? : string;
 }
-
-
 
 export interface Prestation {
     prestation: string;
@@ -41,17 +43,7 @@ export interface Report {
 
 export interface Service {
     date: Date;
-    patient: number;
-    prestation: number;
-    report: number;
+    patient: Patient;
+    prestation: Prestation;
+    report: Report;
 }
-
-export interface Agent {
-    profil: string;
-    speciality: string;
-}
-
-interface Administrator {
-    profil: string;
-}
-

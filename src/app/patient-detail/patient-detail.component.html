@@ -1,0 +1,57 @@
+<form class="registration-form" [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+    <h1>Patient: {{ patient?.profile?.firstname}} {{patient?.profile?.name}}</h1>
+    <div formGroupName="profileForm">
+        <div class="form-group">
+            <label for="nom">Nom<span>*</span></label>
+            <input type="text" formControlName="name" required  value={{patient?.profile?.name}}>
+            <div class="error_message" *ngIf="patientForm.get('profileForm')?.get('name') && patientForm.get('profileForm')?.get('name')!.invalid && patientForm.get('profileForm')?.get('name')!.touched">
+                Nom obligatoire
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="prenom">Prénom<span>*</span></label>
+            <input type="text" formControlName="firstname" required value={{patient?.profile?.firstname}}>
+            <div class="error_message" *ngIf="patientForm.get('profileForm')?.get('firstname') && patientForm.get('profileForm')?.get('firstname')!.invalid && patientForm.get('profileForm')?.get('firstname')!.touched">
+                Prenom obligatoire
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="telephone">Téléphone<span>*</span></label>
+            <input type="text" formControlName="phone_number" required value={{patient?.profile?.phone_number}}>
+            <div class="error_message" *ngIf="patientForm.get('profileForm')?.get('phone_number') && (patientForm.get('profileForm')?.get('phone_number')!.touched || patientForm.get('profileForm')?.get('phone_number')!.dirty) && patientForm.get('profileForm')?.get('phone_number')!.invalid " >
+                numero invalide
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" formControlName="email" value={{patient?.profile?.email}}>
+            <div class="error_message" *ngIf="patientForm.get('profileForm')?.get('email') && patientForm.get('profileForm')?.get('email')!.invalid && (patientForm.get('profileForm')?.get('email')!.touched || patientForm.get('profileForm')?.get('email')!.dirty)">
+                E-mail invalide
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="sexe">Sexe<span>*</span></label>
+        <select formControlName="gender">
+            <option value="M" *ngIf="patient?.gender==='M' " >Homme</option>
+            <option value="F" *ngIf="patient?.gender==='F' ">Femme</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="annee_naissance">Année de naissance</label>
+        <input type="date" formControlName="birth_date" value={{patient?.birth_date}}>
+    </div>
+    <div formGroupName="userForm">
+        <div class="form-group">
+            <label for="username">Nom utilisateur<span>*</span></label>
+            <input type="text" formControlName="username" required value={{patient?.profile?.user?.username}}>
+            <div class="error_message" *ngIf="patientForm.get('profileForm')?.get('userForm')?.get('username') && patientForm.get('profileForm')?.get('userForm')?.get('username')!.invalid && patientForm.get('profileForm')?.get('userForm')?.get('username')!.touched">
+                obligatoire
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="submit-button" [disabled]="!patientForm.valid">Valider</button>
+    <div class="error_message" *ngIf="patientForm.invalid && validationButtonHasBeenPressed">
+        Veuillez bien remplir tous les champs.
+    </div>
+</form>

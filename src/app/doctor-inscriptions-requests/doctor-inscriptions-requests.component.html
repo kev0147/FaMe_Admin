@@ -1,0 +1,27 @@
+<div>
+    <table >
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Numéro de téléphone</th>
+                <th>Email</th>
+
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>    
+        <tbody class="patient-table" *ngIf="nonValidatedDoctors">
+            <tr  *ngFor="let newDoctor of nonValidatedDoctors">
+                <td>{{ newDoctor.profile.name }}</td>
+                <td>{{ newDoctor.profile.firstname }}</td>
+                <td>{{ newDoctor.profile.phone_number }}</td>
+                <td>{{ newDoctor.profile.email }}</td>
+                <td><button (click)="validateDoctor(newDoctor)" class="action-button">Valider</button></td>
+                <td><button (click)="selectDoctor(newDoctor)" class="action-button">Details</button></td>
+                <td><button (click)="deleteDoctor(newDoctor)" class="action-button">Supprimer</button></td>
+            </tr> 
+        </tbody>
+    </table>
+</div>
